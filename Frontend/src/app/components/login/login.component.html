@@ -1,0 +1,36 @@
+<div class="login">
+  <h2 class="login-header">Instagram</h2>
+  <form [formGroup]="loginForm" class="login-form">
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [formControl]="loginForm.controls['emailFormControl'] " [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com">
+      <mat-error
+        *ngIf="loginForm.controls['emailFormControl'].hasError('email') && !loginForm.controls['emailFormControl'].hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="loginForm.controls['emailFormControl'].hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password"
+             [formControl]="loginForm.controls['password']">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <p>
+      <button mat-raised-button [disabled]="!loginForm.valid" (click)="_login()">Log in</button>
+      <a mat-button routerLink="/register">Sign up</a>
+    </p>
+  </form>
+</div>

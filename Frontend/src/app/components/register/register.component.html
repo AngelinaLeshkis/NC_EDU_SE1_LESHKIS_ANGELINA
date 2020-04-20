@@ -1,0 +1,47 @@
+<div class="register">
+  <h2 class="register-header">Registration</h2>
+  <form [formGroup]="registerForm">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput type="username" placeholder="Username" [formControl]="registerForm.controls['username']">
+      <mat-error *ngIf="registerForm.controls['username'].hasError('required')">
+        Username is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [formControl]="registerForm.controls['emailFormControl'] " [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com">
+      <mat-error
+        *ngIf="registerForm.controls['emailFormControl'].hasError('email') && !registerForm.controls['emailFormControl'].hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls['emailFormControl'].hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password"
+             [formControl]="registerForm.controls['password']">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <p>
+      <button mat-raised-button (click)="_register()">
+        Sign up
+      </button>
+      <a mat-button routerLink="/login" class="btn btn-link">Log in</a>
+    </p>
+  </form>
+</div>

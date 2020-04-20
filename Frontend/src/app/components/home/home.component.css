@@ -1,0 +1,32 @@
+.mat-raised-button {
+  background: rgb(1, 29, 51);
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 8px;
+  margin-top: 7px;
+}
+
+.example-card {
+  max-width: 600px;
+  margin-left: 450px;
+  margin-top: 90px;
+}
+
+.example-header-image {
+  background-image: url('https://img2.akspic.ru/image/131890-ozero-voda-ozernyj_kraj-peyzash-prirodnyj_landshaft-3840x2160.jpg');
+  background-size: cover;
+}
+
+img {
+  margin-top: 20px;
+}
+
+i {
+  cursor: pointer;
+}
+
+.example-form-field {
+  margin-left: 560px;
+}
+
