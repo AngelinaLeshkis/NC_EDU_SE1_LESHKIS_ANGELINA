@@ -1,0 +1,16 @@
+.mat-raised-button {
+  background: rgb(1, 29, 51);
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 8px;
+  margin-top: 7px;
+}
+
+i {
+  cursor: pointer;
+}
+
+.example-form-field {
+  margin-left: 560px;
+}
