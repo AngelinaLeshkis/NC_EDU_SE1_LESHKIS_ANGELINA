@@ -28,20 +28,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(long id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServerUrl + "users/" + id);
+        restTemplate.delete(backendServerUrl + "demo/users/deleteUser" + id);
     }
 
     @Override
     public void updateUser(User user) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(backendServerUrl + "users/", user, User.class);
+        restTemplate.put(backendServerUrl + "demo/users/updateUser", user, User.class);
     }
 
 
     @Override
     public List<User> getUsers() {
         RestTemplate restTemplate = new RestTemplate();
-        User[] response = restTemplate.getForObject(backendServerUrl + "users/all", User[].class);
+        User[] response = restTemplate.getForObject(backendServerUrl + "demo/users/", User[].class);
         return response == null ? Collections.emptyList() : Arrays.asList(response);
     }
 
