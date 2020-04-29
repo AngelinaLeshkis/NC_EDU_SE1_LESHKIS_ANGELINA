@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(long id) {
+    public void deleteUser(Long id) {
         userRepo.deleteById(id);
     }
 
@@ -35,12 +35,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getUsers() {
+    public Iterable<User> getUsers() {
         return userRepo.findAll();
     }
 
     @Override
-    public Optional<User> getUserById(long id) {
+    public Optional<User> getUserById(Long id) {
         return userRepo.findById(id);
     }
 }

@@ -38,7 +38,7 @@ public class UserController {
         List<Status> stats = new ArrayList<>();
         stats.add(stat);
         statusRepository.save(stat);
-        User user = new User("rik", "hgdjgsj", "rick@mail.ru");
+        User user = new User("jhhkon", "hgdjgsj", "jkhuck@mail.ru");
         user.setStatuses(stats);
         userService.saveUser(user);
         return user;
@@ -56,7 +56,7 @@ public class UserController {
     }
 
     @PutMapping(value = "/updateUser")
-    public void UpdateUser(@RequestBody User user){
+    public void updateUser(@RequestBody User user){
         userService.updateUser(user);
     }
 

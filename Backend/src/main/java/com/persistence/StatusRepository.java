@@ -1,7 +1,7 @@
 package com.persistence;
 
 import com.entity.Status;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface StatusRepository extends JpaRepository<Status, Long> {
+public interface StatusRepository extends PagingAndSortingRepository<Status, Long> {
 }
