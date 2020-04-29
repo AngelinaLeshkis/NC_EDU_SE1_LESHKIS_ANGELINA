@@ -27,7 +27,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserPostComponent } from './components/user-post/user-post.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AddPostComponent } from './components/add-post/add-post.component';
+import {AddPostComponent} from './components/add-post/add-post.component';
+import {PostViewComponent} from './components/post-view/post-view.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { AddPostComponent } from './components/add-post/add-post.component';
     NavbarComponent,
     UserPostComponent,
     CarouselComponent,
-    AddPostComponent
+    AddPostComponent,
+    PostViewComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../model/user';
+import {User} from '../../model/User';
 import {MatDialog} from '@angular/material/dialog';
 import {AddPostComponent} from '../add-post/add-post.component';
 
@@ -12,18 +12,18 @@ export class UserHeaderComponent implements OnInit {
 
   public user: User;
 
-  constructor(public dialog: MatDialog) {
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
-  OpenEditPage() {
+  subscribe() {
 
   }
 
-  OpenAddPostWindow() {
-    this.dialog.open(AddPostComponent, {autoFocus: false});
+  unsubscribe() {
+
   }
 
 }

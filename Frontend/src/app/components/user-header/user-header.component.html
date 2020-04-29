@@ -1,3 +1,18 @@
-<div class = "user-header">
-  <img src="https://avatars.mds.yandex.net/get-pdb/2883913/30fca20e-6a3e-4914-8904-1938c6717925/s1200?webp=false">
+<div class="user-header">
+  <div class="user-image">
+    <img class="avatar"
+         src="https://avatars.mds.yandex.net/get-pdb/2883913/30fca20e-6a3e-4914-8904-1938c6717925/s1200?webp=false">
+  </div>
+  <div class="user-info">
+    <p class="username">Username</p>
+    <p class="followers">Followers: 200</p>
+    <p class="following">Following: 100</p>
+    <p class="description">profileDescription</p>
+    <button class="editbut" mat-raised-button routerLink="/edit-page">Edit profile</button>
+    <button class="addpostbut" mat-raised-button routerLink="/addPost-page">Add post</button>
+  </div>
+  <div class="subbuttons">
+    <button (click)="subscribe()" class="sub" mat-raised-button>Subscribe</button>
+    <button (click)="unsubscribe()" class="unsub" mat-raised-button>Unsubscribe</button>
+  </div>
 </div>

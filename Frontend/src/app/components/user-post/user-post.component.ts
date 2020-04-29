@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {PostComponent} from '../post/post.component';
+import {PostViewComponent} from '../post-view/post-view.component';
 
 @Component({
   selector: 'app-user-post',
@@ -9,13 +11,18 @@ import {PostComponent} from '../post/post.component';
 })
 export class UserPostComponent implements OnInit {
 
-  constructor(public postWindow: MatDialog) {
+  showModal: boolean;
+  content: string;
+  title: string;
+
+  constructor(public router: Router) {
   }
 
   ngOnInit(): void {
   }
 
   OpenPost() {
-    this.postWindow.open(PostComponent, {autoFocus: false, maxHeight: '100hv'});
+    this.router.navigateByUrl('/post-view');
   }
+
 }
