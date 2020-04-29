@@ -1,5 +1,7 @@
 package fapi.model;
 
+import java.util.List;
+
 public class User {
 
     private Long id;
@@ -10,9 +12,8 @@ public class User {
 
     private String email;
 
-    public User() {
+    private List<Status> statuses;
 
-    }
 
     public Long getId() {
         return id;
@@ -44,5 +45,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Status> getStatus() {
+        return statuses;
+    }
+
+    public void setStatus(List<Status> statuses) {
+        this.statuses = statuses;
     }
 }

@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(long id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServerUrl + "demo/users/deleteUser" + id);
+        restTemplate.delete(backendServerUrl + "demo/users/deleteUser/" + id);
     }
 
     @Override

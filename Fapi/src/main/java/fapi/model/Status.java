@@ -1,6 +1,8 @@
 package fapi.model;
 
 
+import java.util.List;
+
 public class Status {
 
     private Long id;
