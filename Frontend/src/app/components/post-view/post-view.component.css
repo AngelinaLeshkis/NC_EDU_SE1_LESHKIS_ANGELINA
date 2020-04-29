@@ -1,0 +1,22 @@
+.example-card {
+  max-width: 600px;
+  margin-left: 450px;
+  margin-top: 90px;
+}
+
+.example-header-image {
+  background-image: url('https://avatars.mds.yandex.net/get-pdb/2883913/30fca20e-6a3e-4914-8904-1938c6717925/s1200?webp=false');
+  background-size: cover;
+}
+
+img {
+  margin-top: 20px;
+}
+
+i {
+  cursor: pointer;
+}
+
+.example-form-field {
+  margin-left: 560px;
+}
