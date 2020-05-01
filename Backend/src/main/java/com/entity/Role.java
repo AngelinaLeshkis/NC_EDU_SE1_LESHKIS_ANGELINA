@@ -1,12 +1,13 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "role", catalog = "testdb")
 public class Role {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +18,7 @@ public class Role {
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
 
+    @JsonIgnore
     public List<User> getUsers() {
         return users;
     }
@@ -32,6 +34,10 @@ public class Role {
 
     public Role() {
 
+    }
+
+    public Role(Long id) {
+        this.id = id;
     }
 
     public Long getId() {

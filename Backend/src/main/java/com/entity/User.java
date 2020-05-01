@@ -3,106 +3,107 @@ package com.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "user", catalog = "testdb")
 public class User {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-        private String username;
-        private String password;
-        private String email;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String username;
+    private String password;
+    private String email;
 
-        @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-        private List<Post> posts;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Post> posts;
 
-        @ManyToMany
-        @JoinTable(
-                name = "user_role",
-                joinColumns = @JoinColumn(name = "user_id"),
-                inverseJoinColumns = @JoinColumn(name = "role_id"))
-        private List<Role> roles;
+    @ManyToMany
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    List<Role> roles;
 
-        @ManyToMany
-        @JoinTable(
-                name = "user_status",
-                joinColumns = @JoinColumn(name = "user_id"),
-                inverseJoinColumns = @JoinColumn(name = "status_id"))
-        private List<Status> statuses;
+    @ManyToMany
+    @JoinTable(
+            name = "user_status",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "status_id"))
+    List<Status> statuses;
 
-        public List<Status> getStatuses() {
-                return statuses;
+    public User() {
+    }
+
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public List<Status> getStatuses() {
+        return statuses;
+    }
+
+    public void setStatuses(List<Status> statuses) {
+        this.statuses = statuses;
+    }
+
+    public void addStatus(Status status) {
+        if (statuses == null) {
+            statuses = new ArrayList<>();
         }
+        statuses.add(status);
+    }
 
-        public void setStatuses(List<Status> statuses) {
-                this.statuses = statuses;
-        }
+    public Long getId() {
+        return id;
+    }
 
-        public User() {
-        }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-        public User(String username, String password, String email) {
-                this.username = username;
-                this.password = password;
-                this.email = email;
-        }
+    public String getUsername() {
+        return username;
+    }
 
-        public User(Long id, String username, String password, String email,List<Status> statuses) {
-                this.id = id;
-                this.username = username;
-                this.password = password;
-                this.email = email;
-                this.statuses = statuses;
-        }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-        public Long getId() {
-                return id;
-        }
+    public String getPassword() {
+        return password;
+    }
 
-        public void setId(Long id) {
-                this.id = id;
-        }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-        public String getUsername() {
-                return username;
-        }
+    public String getEmail() {
+        return email;
+    }
 
-        public void setUsername(String username) {
-                this.username = username;
-        }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-        public String getPassword() {
-                return password;
-        }
+    public List<Post> getPosts() {
+        return posts;
+    }
 
-        public void setPassword(String password) {
-                this.password = password;
-        }
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 
-        public String getEmail() {
-                return email;
-        }
-
-        public void setEmail(String email) {
-                this.email = email;
-        }
-
-        public List<Post> getPosts() {
-                return posts;
-        }
-
-        public void setPosts(List<Post> posts) {
-                this.posts = posts;
-        }
-
-        public List<Role> getRoles() {
-                return roles;
-        }
-
-        public void setRoles(List<Role> roles) {
-                this.roles = roles;
-        }
 
 }

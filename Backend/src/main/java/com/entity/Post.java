@@ -1,5 +1,7 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -14,9 +16,10 @@ public class Post {
     private Date date;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
 
     public User getUser() {
         return user;
@@ -29,7 +32,7 @@ public class Post {
     public Post() {
     }
 
-    public Post (Long id, String text, Date date) {
+    public Post(Long id, String text, Date date) {
         this.date = date;
         this.text = text;
         this.id = id;

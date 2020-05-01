@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path="/demo/users")
+@RequestMapping(path = "/demo/users")
 public class UserController {
 
     private UserServiceImpl userService;
@@ -32,19 +32,6 @@ public class UserController {
         return user.isPresent() ? ResponseEntity.ok(user.get()) : ResponseEntity.notFound().build();
     }
 
-    @GetMapping(value = "/status")
-    public User saveStatus() {
-        Status stat = new Status("unblocked");
-        List<Status> stats = new ArrayList<>();
-        stats.add(stat);
-        statusRepository.save(stat);
-        User user = new User("jhhkon", "hgdjgsj", "jkhuck@mail.ru");
-        user.setStatuses(stats);
-        userService.saveUser(user);
-        return user;
-    }
-
-
     @PostMapping(value = "")
     public User saveUser(@RequestBody User user) {
         return userService.saveUser(user);
@@ -56,7 +43,7 @@ public class UserController {
     }
 
     @PutMapping(value = "/updateUser")
-    public void updateUser(@RequestBody User user){
+    public void updateUser(@RequestBody User user) {
         userService.updateUser(user);
     }
 

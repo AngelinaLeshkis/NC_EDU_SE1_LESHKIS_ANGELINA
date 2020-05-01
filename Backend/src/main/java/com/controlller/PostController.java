@@ -1,5 +1,6 @@
 package com.controlller;
 
+import com.dto.CreatePostDTO;
 import com.entity.Post;
 import com.serviceimpl.PostServiceImpl;
 import com.serviceimpl.UserServiceImpl;
@@ -14,12 +15,10 @@ import java.util.Optional;
 public class PostController {
 
     private PostServiceImpl postService;
-    private UserServiceImpl userService;
 
     @Autowired
-    public PostController(PostServiceImpl postService, UserServiceImpl userService) {
+    public PostController(PostServiceImpl postService) {
         this.postService = postService;
-        this.userService = userService;
     }
 
     @GetMapping("")
@@ -29,7 +28,7 @@ public class PostController {
 
     @GetMapping(value = "/post/{postId}")
     public ResponseEntity<Post> getPostById(@PathVariable(name = "postId") Long id) {
-        Optional<Post> post = postService.getPostByUserId(id);
+        Optional<Post> post = postService.getPostByPostId(id);
         return post.isPresent() ? ResponseEntity.ok(post.get()) : ResponseEntity.notFound().build();
     }
 
@@ -39,17 +38,14 @@ public class PostController {
     }
 
     @PostMapping(value = "/post")
-    public Post savePost(@RequestBody Post post) {
-        return postService.savePost(post);
+    public Post savePost(@RequestBody CreatePostDTO postDTO) {
+        return postService.savePost(postDTO);
     }
 
     @DeleteMapping(value = "/post/{id}")
     public void deletePost(@PathVariable(name = "id") Long id) {
-        postService.deletePostById(id);
+        postService.deletePostByPostId(id);
     }
-
-
-
 
 
 }

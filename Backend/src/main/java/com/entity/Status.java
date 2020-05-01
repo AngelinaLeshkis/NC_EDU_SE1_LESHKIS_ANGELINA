@@ -9,13 +9,13 @@ import java.util.List;
 @Table(name = "status", catalog = "testdb")
 public class Status {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-        private String status;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String status;
 
-        @ManyToMany(mappedBy = "statuses")
-        private List<User> users;
+    @ManyToMany(mappedBy = "statuses")
+    private List<User> users;
 
     public String getStatus() {
         return status;
@@ -31,6 +31,10 @@ public class Status {
     public Status(Long id, String status) {
         this.id = id;
         this.status = status;
+    }
+
+    public Status(Long id) {
+        this.id = id;
     }
 
     public Status(String status) {
