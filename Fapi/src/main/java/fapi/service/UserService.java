@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface UserService {
 
-    ResponseEntity<String> saveUser(User user);
+    ResponseEntity<User> saveUser(User user);
 
     void deleteUser(long id);
 
@@ -17,4 +17,5 @@ public interface UserService {
     List<User> getUsers();
 
     User getUserById(long id);
+
 }

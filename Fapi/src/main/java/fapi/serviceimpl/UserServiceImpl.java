@@ -3,10 +3,8 @@ package fapi.serviceimpl;
 import fapi.model.User;
 import fapi.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
@@ -21,8 +19,10 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public ResponseEntity<String> saveUser(User user) {
-       return null;
+    public ResponseEntity<User> saveUser(User user) {
+        RestTemplate restTemplate = new RestTemplate();
+        User savedUser = restTemplate.postForEntity(backendServerUrl + "demo/users", user, User.class).getBody();
+        return ResponseEntity.ok().body(savedUser);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getUsers() {
         RestTemplate restTemplate = new RestTemplate();
-        User[] response = restTemplate.getForObject(backendServerUrl + "demo/users/", User[].class);
+        User[] response = restTemplate.getForObject(backendServerUrl + "demo/users", User[].class);
         return response == null ? Collections.emptyList() : Arrays.asList(response);
     }
 

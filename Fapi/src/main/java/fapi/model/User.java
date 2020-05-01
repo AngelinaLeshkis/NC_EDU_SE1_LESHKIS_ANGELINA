@@ -14,6 +14,18 @@ public class User {
 
     private List<Status> statuses;
 
+    private List<Post> posts;
+
+    public User(Long id, String username, String password, String email) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
+    public User() {
+
+    }
 
     public Long getId() {
         return id;
@@ -47,11 +59,19 @@ public class User {
         this.email = email;
     }
 
-    public List<Status> getStatus() {
+    public List<Status> getStatuses() {
         return statuses;
     }
 
-    public void setStatus(List<Status> statuses) {
+    public void setStatuses(List<Status> statuses) {
         this.statuses = statuses;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
