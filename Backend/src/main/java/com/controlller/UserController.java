@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*", allowCredentials = "true")
 @RequestMapping(path = "/demo/users")
 public class UserController {
 
@@ -32,9 +33,10 @@ public class UserController {
         return user.isPresent() ? ResponseEntity.ok(user.get()) : ResponseEntity.notFound().build();
     }
 
-    @PostMapping(value = "")
+    @RequestMapping(value = "")
     public User saveUser(@RequestBody User user) {
-        return userService.saveUser(user);
+        userService.saveUser(user);
+        return user;
     }
 
     @GetMapping(value = "")
