@@ -1,5 +1,6 @@
 package fapi.controller;
 
+import fapi.dto.CreatePostDTO;
 import fapi.model.Post;
 import fapi.model.User;
 import fapi.serviceimpl.PostServiceImpl;
@@ -19,10 +20,10 @@ public class PostController {
         this.postService = postService;
     }
 
-    /*@PostMapping("/addPost")
-    public ResponseEntity<Post> savePost(@RequestBody Post post) {
-        return postService.savePost(post);
-    }*/
+    @PostMapping("/addPost")
+    public ResponseEntity<Post> savePost(@RequestBody CreatePostDTO postDTO) {
+        return postService.savePost(postDTO);
+    }
 
     @GetMapping("")
     Iterable<Post> getAllPosts() {

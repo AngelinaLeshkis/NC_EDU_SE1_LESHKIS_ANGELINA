@@ -1,9 +1,11 @@
 package fapi.serviceimpl;
 
+import fapi.dto.CreatePostDTO;
 import fapi.model.Post;
 import fapi.model.User;
 import fapi.service.PostService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,10 +20,12 @@ public class PostServiceImpl implements PostService {
     @Value("${backend.server.url}")
     private String backendServerUrl;
 
-   /* @Override
-    public Post savePost(CreatePostDTO post) {
-        return null;
-    }*/
+    @Override
+    public ResponseEntity<Post> savePost(CreatePostDTO post) {
+        RestTemplate restTemplate = new RestTemplate();
+        Post savedPost = restTemplate.postForEntity(backendServerUrl + "demo/posts/post", post, Post.class).getBody();
+        return ResponseEntity.ok().body(savedPost);
+    }
 
     @Override
     public Iterable<Post> getPostsByUserId(Long id) {

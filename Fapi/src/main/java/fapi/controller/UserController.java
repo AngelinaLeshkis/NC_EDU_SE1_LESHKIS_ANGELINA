@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*", allowCredentials = "true")
 @RequestMapping(path = "fapi/users")
 public class UserController {
 
@@ -36,7 +37,7 @@ public class UserController {
         //return ResponseEntity.ok(user);
     }
 
-    @PostMapping("/addUser")
+    @RequestMapping("/addUser")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         return userService.saveUser(user);
     }
